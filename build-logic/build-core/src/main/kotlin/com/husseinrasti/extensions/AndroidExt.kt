@@ -19,6 +19,7 @@ package com.husseinrasti.extensions
 
 import com.android.build.gradle.LibraryExtension
 import com.husseinrasti.build_core.*
+import com.husseinrasti.libs.BuildDependenciesVersions
 import org.gradle.api.Action
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
@@ -53,6 +54,10 @@ fun Project.androidLibrary() {
         }
 
         buildFeatures.compose = true
+
+        composeOptions {
+            kotlinCompilerExtensionVersion = BuildDependenciesVersions.compose
+        }
 
         flavorDimensions.add(BuildProductDimensions.ENVIRONMENT)
         productFlavors.apply {

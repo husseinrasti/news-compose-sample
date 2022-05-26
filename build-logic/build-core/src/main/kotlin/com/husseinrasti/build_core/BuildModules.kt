@@ -31,6 +31,8 @@ object BuildModules {
         const val FAVORITE = ":features:favorite"
     }
 
-    object Commons {}
+    object Commons {
+        const val UI = ":common-ui"
+    }
 
 }

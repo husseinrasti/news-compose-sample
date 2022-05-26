@@ -17,6 +17,9 @@
 <resources>
     <string name="app_name">RSS</string>
 
+    <string name="title_feed">Feed</string>
+    <string name="title_favorite">Favorite</string>
+
     <string name="msg_error">Something went wrong.</string>
     <string name="msg_empty">No results found.</string>
 </resources>

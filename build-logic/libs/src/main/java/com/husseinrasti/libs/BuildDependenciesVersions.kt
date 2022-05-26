@@ -24,9 +24,15 @@ object BuildDependenciesVersions {
 
     const val multidex = "2.0.1"
 
-    const val gradle = "7.0.4"
+    const val gradle = "7.1.3"
 
-    const val kotlin = "1.6.10"
+    const val kotlin = "1.6.20"
+
+    const val compose = "1.2.0-alpha08"
+    const val composeViewModel = "2.4.1"
+    const val composeMaterial3 = "1.0.0-alpha10"
+    const val composeNavigation = "2.4.2"
+    const val composeActivity = "1.4.0"
 
     const val securityCrypto = "1.0.0"
 

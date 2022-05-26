@@ -18,10 +18,12 @@ package com.husseinrasti.rss.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.husseinrasti.data.remoteKeys.dao.RemoteKeysDao
 import com.husseinrasti.data.remoteKeys.entity.RemoteKeysResponse
 import com.husseinrasti.feed.data.dao.FeedDao
 import com.husseinrasti.feed.data.entity.FeedEntity
+import com.husseinrasti.rss.database.converter.ArrayTypeConverter
 
 
 /**
@@ -38,6 +40,13 @@ import com.husseinrasti.feed.data.entity.FeedEntity
     ],
     version = 1,
     exportSchema = false
+)
+/**
+ * This is the converter for the tables
+ * Whenever you want save a value that its not valid for sqlite
+ */
+@TypeConverters(
+    ArrayTypeConverter::class
 )
 abstract class AppDatabase : RoomDatabase() {
 

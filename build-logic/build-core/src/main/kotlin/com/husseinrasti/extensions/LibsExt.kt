@@ -28,13 +28,18 @@ fun DependencyHandler.addComposeDependencies() {
     implementation(Compose.composeActivity)
     implementation(Compose.composeAnimation)
     implementation(Compose.composeViewModel)
+    implementation(Compose.composeRuntime)
+    implementation(Compose.composeLiveData)
     implementation(Compose.composeUI)
     implementation(Compose.composeUiTooling)
     implementation(Compose.composeUiToolingPreview)
     implementation(Compose.composeMaterial)
+    implementation(Compose.composeMaterial3)
+    implementation(Compose.composeMaterial3WindowSize)
     implementation(Compose.composeFoundation)
     implementation(Compose.composeIcons)
     implementation(Compose.composeIconsExtended)
+    implementation(Compose.composeNavigation)
     implementation(Compose.composeUITests)
 }
 

@@ -18,6 +18,7 @@ import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import com.husseinrasti.build_core.*
 import com.husseinrasti.build_core.BuildType
 import com.husseinrasti.extensions.*
+import com.husseinrasti.libs.BuildDependenciesVersions
 
 plugins {
     id("com.android.application")
@@ -86,7 +87,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.1.1"
+        kotlinCompilerExtensionVersion = BuildDependenciesVersions.compose
     }
 
 }
@@ -105,4 +106,6 @@ dependencies {
     implementation(project(BuildModules.DATA))
     implementation(project(BuildModules.DOMAIN))
     implementation(project(BuildModules.Features.FEED))
+    implementation(project(BuildModules.Features.FAVORITE))
+    implementation(project(BuildModules.Commons.UI))
 }
