@@ -14,22 +14,32 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "SampleRSS"
+package com.husseinrasti.core.extensions
 
-includeBuild("build-logic")
+import android.view.View
 
-include(":app")
-include(":core")
+
+/**
+ * Created by Hussein Rasti on 2/24/22.
+ */
+
+
+fun View.visible() {
+    visibility = View.VISIBLE
+}
+
+fun View.inVisible() {
+    visibility = View.INVISIBLE
+}
+
+fun View.gone() {
+    visibility = View.GONE
+}
+
+fun View.visibility(show: Boolean, isGone: Boolean = true) {
+    if (show) visible() else if (isGone) gone() else inVisible()
+}
+
+fun View.notVisibility(show: Boolean, isGone: Boolean = true) {
+    if (show) if (isGone) gone() else inVisible() else visible()
+}

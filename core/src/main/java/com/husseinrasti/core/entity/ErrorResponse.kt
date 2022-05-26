@@ -14,22 +14,15 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "SampleRSS"
+package com.husseinrasti.core.entity
 
-includeBuild("build-logic")
+import com.google.gson.annotations.SerializedName
 
-include(":app")
-include(":core")
+
+/**
+ * Created by Hussein Rasti on 2/22/22.
+ */
+data class ErrorResponse(
+    @SerializedName("error")
+    val error: String?
+)

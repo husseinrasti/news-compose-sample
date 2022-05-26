@@ -14,22 +14,20 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "SampleRSS"
+package com.husseinrasti.core.extensions
 
-includeBuild("build-logic")
+import java.text.NumberFormat
+import java.util.*
 
-include(":app")
-include(":core")
+
+/**
+ * Created by Hussein Rasti on 2/25/22.
+ */
+
+fun Double.toPercent() = "${String.format("%.2f", this)}%"
+
+fun Double.toDollar(): String = if (this > 99.99) formatPrice() else "$$this"
+
+fun Double.formatPrice(): String = NumberFormat.getCurrencyInstance(
+    Locale("en", "US")
+).format(this)

@@ -14,22 +14,24 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "SampleRSS"
+package com.husseinrasti.core.usecase
 
-includeBuild("build-logic")
 
-include(":app")
-include(":core")
+import kotlinx.coroutines.flow.Flow
+
+
+/**
+ * Created by Hussein Rasti on 2/22/22.
+ */
+
+interface BaseUseCase<in Params, out Type> {
+    suspend operator fun invoke(params: Params): Type
+}
+
+interface FlowUseCase<in Params, Type> {
+    suspend operator fun invoke(params: Params): Flow<Type>
+}
+
+interface CompletableUseCase<in Params> {
+    suspend operator fun invoke(params: Params)
+}

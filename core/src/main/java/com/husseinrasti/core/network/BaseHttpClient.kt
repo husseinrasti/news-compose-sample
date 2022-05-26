@@ -14,22 +14,26 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "SampleRSS"
+package com.husseinrasti.core.network
 
-includeBuild("build-logic")
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import javax.inject.Inject
+import javax.inject.Singleton
 
-include(":app")
-include(":core")
+
+/**
+ * Created by Hussein Rasti on 2/22/22.
+ */
+
+@Singleton
+class BaseHttpClient @Inject constructor() {
+
+    val okHttpClient = OkHttpClient()
+        .newBuilder()
+        .addInterceptor(HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        })
+        .build()
+
+}

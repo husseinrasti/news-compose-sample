@@ -14,22 +14,27 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "SampleRSS"
+package com.husseinrasti.core.network
 
-includeBuild("build-logic")
+import com.google.gson.Gson
+import com.husseinrasti.core.BuildConfig
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
+import javax.inject.Singleton
 
-include(":app")
-include(":core")
+
+/**
+ * Created by Hussein Rasti on 2/22/22.
+ */
+@Singleton
+class BaseRetrofit @Inject constructor(okHttpClient: OkHttpClient, gson: Gson) {
+
+    val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl(BuildConfig.BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .client(okHttpClient)
+        .build()
+
+}

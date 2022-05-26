@@ -14,22 +14,12 @@
  * limitations under the License.
  */
 
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
-rootProject.name = "SampleRSS"
+package com.husseinrasti.core.mapper
 
-includeBuild("build-logic")
 
-include(":app")
-include(":core")
+/**
+ * Created by Hussein Rasti on 2/22/22.
+ */
+interface ResponseObject<out DomainObject : Any?> {
+    fun toDomain(): DomainObject
+}
