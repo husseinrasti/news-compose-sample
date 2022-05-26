@@ -22,6 +22,6 @@ package com.husseinrasti.core.network
  */
 object Urls {
 
-    const val MARKETS = "coins/markets"
+    const val NEWS = "news"
 
 }

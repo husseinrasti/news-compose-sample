@@ -30,11 +30,11 @@ fun DependencyHandler.addComposeDependencies() {
     implementation(Compose.composeViewModel)
     implementation(Compose.composeUI)
     implementation(Compose.composeUiTooling)
+    implementation(Compose.composeUiToolingPreview)
     implementation(Compose.composeMaterial)
     implementation(Compose.composeFoundation)
     implementation(Compose.composeIcons)
     implementation(Compose.composeIconsExtended)
-    implementation(Compose.composeLivedata)
     implementation(Compose.composeUITests)
 }
 

@@ -20,6 +20,8 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.husseinrasti.data.remoteKeys.dao.RemoteKeysDao
 import com.husseinrasti.data.remoteKeys.entity.RemoteKeysResponse
+import com.husseinrasti.feed.data.dao.FeedDao
+import com.husseinrasti.feed.data.entity.FeedEntity
 
 
 /**
@@ -30,7 +32,10 @@ import com.husseinrasti.data.remoteKeys.entity.RemoteKeysResponse
  * below annotation is database version and the tables
  */
 @Database(
-    entities = [RemoteKeysResponse::class],
+    entities = [
+        RemoteKeysResponse::class,
+        FeedEntity.Item::class
+    ],
     version = 1,
     exportSchema = false
 )
@@ -42,5 +47,7 @@ abstract class AppDatabase : RoomDatabase() {
      */
 
     abstract fun remoteKeysDao(): RemoteKeysDao
+
+    abstract fun feedDao(): FeedDao
 
 }

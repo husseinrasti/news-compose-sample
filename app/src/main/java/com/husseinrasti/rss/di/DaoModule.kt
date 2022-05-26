@@ -17,6 +17,7 @@
 package com.husseinrasti.rss.di
 
 import com.husseinrasti.data.remoteKeys.dao.RemoteKeysDao
+import com.husseinrasti.feed.data.dao.FeedDao
 import com.husseinrasti.rss.database.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -33,6 +34,12 @@ class DaoModule {
     @ViewModelScoped
     fun remoteKeysDao(appDatabase: AppDatabase): RemoteKeysDao {
         return appDatabase.remoteKeysDao()
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun feedDao(appDatabase: AppDatabase): FeedDao {
+        return appDatabase.feedDao()
     }
 
 }
