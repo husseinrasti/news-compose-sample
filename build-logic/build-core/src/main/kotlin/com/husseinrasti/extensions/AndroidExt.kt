@@ -48,19 +48,11 @@ fun Project.androidLibrary() {
             getByName(BuildType.DEBUG) {
                 isMinifyEnabled = BuildTypeDebug.isMinifyEnabled
                 isTestCoverageEnabled = BuildTypeDebug.isTestCoverageEnabled
-                extra["enableCrashlytics"] = false
                 extra["alwaysUpdateBuildId"] = false
             }
         }
 
-        buildFeatures.viewBinding = true
-
-        lint.apply {
-            lintConfig = rootProject.file(".lint/config.xml")
-            isCheckAllWarnings = false
-            isWarningsAsErrors = false
-            isCheckReleaseBuilds = false
-        }
+        buildFeatures.compose = true
 
         flavorDimensions.add(BuildProductDimensions.ENVIRONMENT)
         productFlavors.apply {

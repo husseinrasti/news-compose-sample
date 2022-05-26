@@ -24,6 +24,20 @@ import org.gradle.kotlin.dsl.support.delegates.DependencyHandlerDelegate
  * Created by Hussein Rasti on 2/22/22.
  */
 
+fun DependencyHandler.addComposeDependencies() {
+    implementation(Compose.composeActivity)
+    implementation(Compose.composeAnimation)
+    implementation(Compose.composeViewModel)
+    implementation(Compose.composeUI)
+    implementation(Compose.composeUiTooling)
+    implementation(Compose.composeMaterial)
+    implementation(Compose.composeFoundation)
+    implementation(Compose.composeIcons)
+    implementation(Compose.composeIconsExtended)
+    implementation(Compose.composeLivedata)
+    implementation(Compose.composeUITests)
+}
+
 fun DependencyHandler.addJetpackDependencies() {
     implementation(Dependencies.kotlin)
     implementation(Dependencies.coreKtx)

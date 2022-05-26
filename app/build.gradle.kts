@@ -17,7 +17,7 @@
 import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import com.husseinrasti.build_core.*
 import com.husseinrasti.build_core.BuildType
-import com.husseinrasti.libs.*
+import com.husseinrasti.extensions.*
 
 plugins {
     id("com.android.application")
@@ -43,7 +43,7 @@ android {
         testInstrumentationRunner = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
-    buildFeatures.viewBinding = true
+    buildFeatures.compose = true
 
     buildTypes.apply {
         getByName(BuildType.RELEASE) {
@@ -85,6 +85,10 @@ android {
             }
     }
 
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.1.1"
+    }
+
 }
 
 kapt {
@@ -92,41 +96,10 @@ kapt {
 }
 
 dependencies {
-    implementation(Dependencies.kotlin)
-    implementation(Dependencies.coreKtx)
-    implementation(SupportDependencies.appcompat)
-    implementation(Dependencies.multidex)
-    implementation(Dependencies.securityCrypto)
-    implementation(SupportDependencies.legacySupport)
-    implementation(SupportDependencies.materialDesign)
-    implementation(SupportDependencies.constraintLayout)
-    implementation(SupportDependencies.cardview)
-    implementation(SupportDependencies.recyclerview)
-    implementation(Dependencies.paging)
-    implementation(Dependencies.preferenceKtx)
-    implementation(Dependencies.activityKtx)
-    implementation(Dependencies.fragmentKtx)
-    implementation(Dependencies.lifecycleCommon)
-    implementation(Dependencies.lifecycleCoroutines)
-    implementation(Dependencies.lifecycleRuntime)
-    implementation(Dependencies.lifecycleViewModel)
-    implementation(ThirdParty.retrofit)
-    implementation(ThirdParty.retrofitGson)
-    implementation(ThirdParty.retrofitRxJavaAdapter)
-    implementation(ThirdParty.googleGson)
-    implementation(ThirdParty.okHttp)
-    implementation(ThirdParty.okHttpInterceptor)
-    implementation(Dependencies.navigationFragment)
-    implementation(Dependencies.navigationUi)
-    implementation(ThirdParty.glide)
-    implementation(ThirdParty.glideCompiler)
-    implementation(Dependencies.roomKtx)
-    implementation(Dependencies.roomRuntime)
-    kapt(AnnotationProcessing.roomCompiler)
-    implementation(ThirdParty.shimmerEffect)
-
-    implementation(DaggerHilt.daggerHilt)
-    kapt(DaggerHilt.daggerHiltCompiler)
+    addJetpackDependencies()
+    addSupportDependencies()
+    addThirdPartyDependencies()
+    addComposeDependencies()
 
     implementation(project(BuildModules.CORE))
 }

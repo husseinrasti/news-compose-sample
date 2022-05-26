@@ -41,6 +41,7 @@ class AndroidLibraryPlugin : Plugin<Project> {
             addJetpackDependencies()
             addSupportDependencies()
             addThirdPartyDependencies()
+            addComposeDependencies()
         }
     }
 }
