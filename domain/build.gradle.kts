@@ -13,24 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import com.husseinrasti.build_core.BuildModules
 
-package com.husseinrasti.build_core
+plugins {
+    id("core-android-library")
+}
 
-
-/**
- * Created by Hussein Rasti on 2/22/22.
- */
-object BuildModules {
-    const val APP = ":app"
-    const val CORE = ":core"
-    const val DATA = ":data"
-    const val DOMAIN = ":domain"
-
-    object Features {
-        const val FEED = ":features:feed"
-        const val FAVORITE = ":features:favorite"
-    }
-
-    object Commons {}
-
+dependencies {
+    implementation(project(BuildModules.CORE))
 }

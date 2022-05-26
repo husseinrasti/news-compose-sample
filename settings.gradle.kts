@@ -33,4 +33,6 @@ includeBuild("build-logic")
 
 include(":app")
 include(":core")
+include(":data")
+include(":domain")
 include(":features:feed")

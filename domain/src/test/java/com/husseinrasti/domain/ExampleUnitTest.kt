@@ -14,23 +14,20 @@
  * limitations under the License.
  */
 
-package com.husseinrasti.build_core
+package com.husseinrasti.domain
 
+import org.junit.Test
+
+import org.junit.Assert.*
 
 /**
- * Created by Hussein Rasti on 2/22/22.
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
  */
-object BuildModules {
-    const val APP = ":app"
-    const val CORE = ":core"
-    const val DATA = ":data"
-    const val DOMAIN = ":domain"
-
-    object Features {
-        const val FEED = ":features:feed"
-        const val FAVORITE = ":features:favorite"
+class ExampleUnitTest {
+    @Test
+    fun addition_isCorrect() {
+        assertEquals(4, 2 + 2)
     }
-
-    object Commons {}
-
 }

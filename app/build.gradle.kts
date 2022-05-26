@@ -102,4 +102,7 @@ dependencies {
     addComposeDependencies()
 
     implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.DATA))
+    implementation(project(BuildModules.DOMAIN))
+    implementation(project(BuildModules.Features.FEED))
 }
