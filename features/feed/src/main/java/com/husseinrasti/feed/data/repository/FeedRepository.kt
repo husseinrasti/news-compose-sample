@@ -1,7 +1,7 @@
 package com.husseinrasti.feed.data.repository
 
 import androidx.paging.PagingData
-import com.husseinrasti.feed.data.entity.FeedEntity
+import com.husseinrasti.domain.news.entity.NewsEntity
 import kotlinx.coroutines.flow.Flow
 
 
@@ -10,8 +10,6 @@ import kotlinx.coroutines.flow.Flow
  */
 interface FeedRepository {
 
-    fun getFeeds(): Flow<PagingData<FeedEntity.Item>>
-
-    suspend fun update(entity: FeedEntity.Item)
+    fun getFeeds(): Flow<PagingData<NewsEntity.Item>>
 
 }

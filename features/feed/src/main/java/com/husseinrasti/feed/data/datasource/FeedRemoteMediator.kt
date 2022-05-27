@@ -13,8 +13,9 @@ import com.husseinrasti.domain.remotekeys.usecase.DeleteRemoteKeysUseCase
 import com.husseinrasti.domain.remotekeys.usecase.FetchKeysByTypeUseCase
 import com.husseinrasti.domain.remotekeys.usecase.InsertRemoteKeysUseCase
 import com.husseinrasti.core.R
-import com.husseinrasti.feed.data.dao.FeedDao
-import com.husseinrasti.feed.data.entity.FeedEntity
+import com.husseinrasti.domain.news.entity.NewsEntity
+import com.husseinrasti.domain.news.usecase.ClearNewsUseCase
+import com.husseinrasti.domain.news.usecase.InsertListNewsUseCase
 import com.husseinrasti.feed.data.remote.FeedApi
 import javax.inject.Inject
 
@@ -25,14 +26,15 @@ import javax.inject.Inject
 @OptIn(ExperimentalPagingApi::class)
 class FeedRemoteMediator @Inject constructor(
     private val resources: Resources,
-    private val dao: FeedDao,
     private val api: FeedApi,
     private val fetchKeysByTypeUseCase: FetchKeysByTypeUseCase,
     private val insertRemoteKeysUseCase: InsertRemoteKeysUseCase,
-    private val deleteRemoteKeysUseCase: DeleteRemoteKeysUseCase
-) : RemoteMediator<Int, FeedEntity.Item>() {
+    private val deleteRemoteKeysUseCase: DeleteRemoteKeysUseCase,
+    private val insertListNewsUseCase: InsertListNewsUseCase,
+    private val clearNewsUseCase: ClearNewsUseCase
+) : RemoteMediator<Int, NewsEntity.Item>() {
 
-    override suspend fun load(loadType: LoadType, state: PagingState<Int, FeedEntity.Item>): MediatorResult {
+    override suspend fun load(loadType: LoadType, state: PagingState<Int, NewsEntity.Item>): MediatorResult {
         val page = when (loadType) {
             LoadType.REFRESH -> {
                 val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
@@ -56,8 +58,8 @@ class FeedRemoteMediator @Inject constructor(
                 val prevKey = if (page == STARTING_PAGE_INDEX) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 insertRemoteKeysUseCase(RemoteKeysEntity.Item(type = "News", prevKey = prevKey, nextKey = nextKey))
-                if (page == 0 || loadType == LoadType.REFRESH) dao.clear()
-                dao.insert(data.map { it.toDomain() })
+                if (page == 0 || loadType == LoadType.REFRESH) clearNewsUseCase(ClearNewsUseCase.Params(""))
+                insertListNewsUseCase(data.map { it.toDomain() })
                 MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
             } else {
                 MediatorResult.Error(response.errorResponse(resources.getString(R.string.msg_error)))
@@ -69,21 +71,21 @@ class FeedRemoteMediator @Inject constructor(
     }
 
     private suspend fun getRemoteKeyForLastItem(
-        state: PagingState<Int, FeedEntity.Item>
+        state: PagingState<Int, NewsEntity.Item>
     ): RemoteKeysEntity.Item? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { fetchKeysByTypeUseCase(FetchKeysByTypeUseCase.Params("News")) }
     }
 
     private suspend fun getRemoteKeyForFirstItem(
-        state: PagingState<Int, FeedEntity.Item>
+        state: PagingState<Int, NewsEntity.Item>
     ): RemoteKeysEntity.Item? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { fetchKeysByTypeUseCase(FetchKeysByTypeUseCase.Params("News")) }
     }
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(
-        state: PagingState<Int, FeedEntity.Item>
+        state: PagingState<Int, NewsEntity.Item>
     ): RemoteKeysEntity.Item? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.let {

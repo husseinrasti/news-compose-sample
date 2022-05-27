@@ -6,9 +6,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.husseinrasti.core.extensions.allowReads
 import com.husseinrasti.core.utils.NETWORK_PAGE_SIZE
-import com.husseinrasti.feed.data.dao.FeedDao
+import com.husseinrasti.domain.news.entity.NewsEntity
+import com.husseinrasti.domain.news.usecase.GetNewsPagingUseCase
 import com.husseinrasti.feed.data.datasource.FeedRemoteMediator
-import com.husseinrasti.feed.data.entity.FeedEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -18,10 +18,10 @@ import javax.inject.Inject
  */
 class FeedRepositoryImpl @Inject constructor(
     private val feedRemoteMediator: FeedRemoteMediator,
-    private val dao: FeedDao
+    private val getNewsPagingUseCase: GetNewsPagingUseCase
 ) : FeedRepository {
 
-    override fun getFeeds(): Flow<PagingData<FeedEntity.Item>> {
+    override fun getFeeds(): Flow<PagingData<NewsEntity.Item>> {
         return allowReads {
             @OptIn(ExperimentalPagingApi::class)
             Pager(
@@ -30,13 +30,9 @@ class FeedRepositoryImpl @Inject constructor(
                     enablePlaceholders = false
                 ),
                 remoteMediator = feedRemoteMediator,
-                pagingSourceFactory = { dao.select() }
+                pagingSourceFactory = { getNewsPagingUseCase(GetNewsPagingUseCase.Params("")) }
             ).flow
         }
-    }
-
-    override suspend fun update(entity: FeedEntity.Item) {
-        dao.update(entity)
     }
 
 }

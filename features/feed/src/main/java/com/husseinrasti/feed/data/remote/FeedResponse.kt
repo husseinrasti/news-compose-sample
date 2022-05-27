@@ -2,7 +2,7 @@ package com.husseinrasti.feed.data.remote
 
 import com.google.gson.annotations.SerializedName
 import com.husseinrasti.core.mapper.ResponseObject
-import com.husseinrasti.feed.data.entity.FeedEntity
+import com.husseinrasti.domain.news.entity.NewsEntity
 
 data class FeedResponse(
     @SerializedName("results")
@@ -21,9 +21,9 @@ data class FeedResponse(
         val date: String?,
         @SerializedName("title")
         val title: String?
-    ) : ResponseObject<FeedEntity.Item> {
-        override fun toDomain(): FeedEntity.Item {
-            return FeedEntity.Item(
+    ) : ResponseObject<NewsEntity.Item> {
+        override fun toDomain(): NewsEntity.Item {
+            return NewsEntity.Item(
                 creator = creator ?: listOf(),
                 description = description ?: "",
                 imageUrl = imageUrl ?: "",

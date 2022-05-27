@@ -1,4 +1,4 @@
-package com.husseinrasti.domain.favorite.entity
+package com.husseinrasti.domain.news.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -7,13 +7,13 @@ import androidx.room.PrimaryKey
 /**
  * Created by Hussein Rasti on 5/27/22.
  */
-class FavoriteEntity {
+class NewsEntity {
 
-    @Entity(tableName = "tbl_favorite")
+    @Entity(tableName = "tbl_news")
     data class Item(
-        @PrimaryKey(autoGenerate = false)
+        @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
-        val id: Long,
+        val id: Long? = null,
         @ColumnInfo(name = "creator")
         val creator: List<String>,
         @ColumnInfo(name = "desc")
@@ -27,7 +27,7 @@ class FavoriteEntity {
         @ColumnInfo(name = "title")
         val title: String,
         @ColumnInfo(name = "isFavorite")
-        var isFavorite: Boolean
+        var isFavorite: Boolean = false
     )
 
 }

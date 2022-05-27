@@ -1,16 +1,16 @@
-package com.husseinrasti.domain.favorite.usecase
+package com.husseinrasti.domain.news.usecase
 
 import com.husseinrasti.core.usecase.CompletableUseCase
-import com.husseinrasti.domain.favorite.repository.FavoriteRepository
+import com.husseinrasti.domain.news.repository.NewsRepository
 import javax.inject.Inject
 
 
 /**
  * Created by Hussein Rasti on 5/26/22.
  */
-class ClearFavoritesUseCase @Inject constructor(
-    private val repository: FavoriteRepository
-) : CompletableUseCase<ClearFavoritesUseCase.Params> {
+class ClearNewsUseCase @Inject constructor(
+    private val repository: NewsRepository
+) : CompletableUseCase<ClearNewsUseCase.Params> {
 
     override suspend fun invoke(params: Params) {
         repository.clear()

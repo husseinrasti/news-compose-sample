@@ -19,12 +19,10 @@ package com.husseinrasti.rss.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.husseinrasti.data.favorite.dao.FavoriteDao
+import com.husseinrasti.data.news.dao.NewsDao
 import com.husseinrasti.data.remoteKeys.dao.RemoteKeysDao
 import com.husseinrasti.data.remoteKeys.entity.RemoteKeysResponse
-import com.husseinrasti.domain.favorite.entity.FavoriteEntity
-import com.husseinrasti.feed.data.dao.FeedDao
-import com.husseinrasti.feed.data.entity.FeedEntity
+import com.husseinrasti.domain.news.entity.NewsEntity
 import com.husseinrasti.rss.database.converter.ArrayTypeConverter
 
 
@@ -38,8 +36,7 @@ import com.husseinrasti.rss.database.converter.ArrayTypeConverter
 @Database(
     entities = [
         RemoteKeysResponse::class,
-        FeedEntity.Item::class,
-        FavoriteEntity.Item::class
+        NewsEntity.Item::class
     ],
     version = 1,
     exportSchema = false
@@ -60,8 +57,6 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun remoteKeysDao(): RemoteKeysDao
 
-    abstract fun feedDao(): FeedDao
-
-    abstract fun favoriteDao(): FavoriteDao
+    abstract fun newsDao(): NewsDao
 
 }

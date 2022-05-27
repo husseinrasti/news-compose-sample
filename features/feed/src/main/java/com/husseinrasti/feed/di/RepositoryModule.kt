@@ -1,6 +1,6 @@
 package com.husseinrasti.feed.di
 
-import com.husseinrasti.feed.data.dao.FeedDao
+import com.husseinrasti.domain.news.usecase.GetNewsPagingUseCase
 import com.husseinrasti.feed.data.datasource.FeedRemoteMediator
 import com.husseinrasti.feed.data.repository.FeedRepository
 import com.husseinrasti.feed.data.repository.FeedRepositoryImpl
@@ -23,10 +23,10 @@ class RepositoryModule {
     @ViewModelScoped
     fun feedRepository(
         feedRemoteMediator: FeedRemoteMediator,
-        dao: FeedDao
+        getNewsPagingUseCase: GetNewsPagingUseCase
     ): FeedRepository = FeedRepositoryImpl(
         feedRemoteMediator = feedRemoteMediator,
-        dao = dao
+        getNewsPagingUseCase = getNewsPagingUseCase
     )
 
 }

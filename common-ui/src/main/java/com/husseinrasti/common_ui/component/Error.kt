@@ -4,12 +4,12 @@ import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.SignalWifiConnectedNoInternet4
 import androidx.compose.material.icons.filled.SignalWifiStatusbarConnectedNoInternet4
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.husseinrasti.common_ui.theme.AppTheme
@@ -21,8 +21,9 @@ import com.husseinrasti.common_ui.theme.AppTheme
 
 @Composable
 fun ErrorNetwork(
+    modifier: Modifier = Modifier,
     message: String?,
-    modifier: Modifier = Modifier
+    imageVector: ImageVector = Icons.Filled.SignalWifiStatusbarConnectedNoInternet4
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
@@ -30,9 +31,9 @@ fun ErrorNetwork(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Icon(
-            imageVector = Icons.Filled.SignalWifiStatusbarConnectedNoInternet4,
+            imageVector = imageVector,
             contentDescription = null,
-            modifier = Modifier.size(48.dp)
+            modifier = Modifier.size(72.dp)
         )
         Spacer(modifier = Modifier.size(8.dp))
         Text(text = message ?: "Something went wrong.")

@@ -14,8 +14,8 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.husseinrasti.common_ui.component.ErrorNetwork
 import com.husseinrasti.common_ui.component.ProgressBar
+import com.husseinrasti.domain.news.entity.NewsEntity
 import com.husseinrasti.feed.component.CardNews
-import com.husseinrasti.feed.data.entity.FeedEntity
 
 
 /**
@@ -27,7 +27,7 @@ fun Feed(
     modifier: Modifier = Modifier,
     viewModel: FeedViewModel = hiltViewModel()
 ) {
-    val data: LazyPagingItems<FeedEntity.Item> = viewModel.feeds.collectAsLazyPagingItems()
+    val data: LazyPagingItems<NewsEntity.Item> = viewModel.feeds.collectAsLazyPagingItems()
     val uriHandler = LocalUriHandler.current
 
     Feed(
@@ -41,9 +41,9 @@ fun Feed(
 @Composable
 private fun Feed(
     modifier: Modifier,
-    data: LazyPagingItems<FeedEntity.Item>,
-    onClickItem: (FeedEntity.Item) -> Unit,
-    onClickFavorite: (FeedEntity.Item) -> Unit
+    data: LazyPagingItems<NewsEntity.Item>,
+    onClickItem: (NewsEntity.Item) -> Unit,
+    onClickFavorite: (NewsEntity.Item) -> Unit
 ) {
     Column(
         modifier = modifier.fillMaxSize()
@@ -55,7 +55,7 @@ private fun Feed(
                 }
                 is LoadState.Error -> {
                     val e = data.loadState.refresh as LoadState.Error
-                    ErrorNetwork(e.error.localizedMessage)
+                    ErrorNetwork(message = e.error.localizedMessage)
                 }
             }
         }
@@ -76,7 +76,7 @@ private fun Feed(
                     }
                     is LoadState.Error -> {
                         val e = data.loadState.append as LoadState.Error
-                        item { ErrorNetwork(e.error.localizedMessage) }
+                        item { ErrorNetwork(message = e.error.localizedMessage) }
                     }
                 }
             }
@@ -86,9 +86,9 @@ private fun Feed(
 
 
 private fun LazyListScope.Feed(
-    data: LazyPagingItems<FeedEntity.Item>,
-    onClickItem: (FeedEntity.Item) -> Unit,
-    onClickFavorite: (FeedEntity.Item) -> Unit
+    data: LazyPagingItems<NewsEntity.Item>,
+    onClickItem: (NewsEntity.Item) -> Unit,
+    onClickFavorite: (NewsEntity.Item) -> Unit
 ) {
     items(data) {
         it?.let { item ->

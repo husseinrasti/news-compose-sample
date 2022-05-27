@@ -1,4 +1,4 @@
-package com.husseinrasti.feed.component
+package com.husseinrasti.favorite.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -61,8 +61,7 @@ fun CardNews(
                     IconButton(onClick = { onClickFavorite(item) }) {
                         Icon(
                             imageVector = Icons.Filled.Favorite,
-                            tint = if (item.isFavorite) MaterialTheme.colorScheme.onError
-                            else MaterialTheme.colorScheme.outline,
+                            tint = MaterialTheme.colorScheme.onError,
                             contentDescription = null
                         )
                     }

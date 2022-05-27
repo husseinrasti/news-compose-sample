@@ -1,4 +1,4 @@
-package com.husseinrasti.domain.favorite.usecase
+package com.husseinrasti.domain.news.usecase
 
 import com.husseinrasti.core.usecase.CompletableUseCase
 import com.husseinrasti.domain.news.entity.NewsEntity
@@ -9,12 +9,12 @@ import javax.inject.Inject
 /**
  * Created by Hussein Rasti on 5/26/22.
  */
-class UpdateFavoritesUseCase @Inject constructor(
+class InsertListNewsUseCase @Inject constructor(
     private val repository: NewsRepository
-) : CompletableUseCase<NewsEntity.Item> {
+) : CompletableUseCase<List<NewsEntity.Item>> {
 
-    override suspend fun invoke(params: NewsEntity.Item) {
-        repository.update(params)
+    override suspend fun invoke(params: List<NewsEntity.Item>) {
+        repository.insert(params)
     }
 
 }

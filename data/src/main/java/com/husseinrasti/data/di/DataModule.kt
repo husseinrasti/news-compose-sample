@@ -16,11 +16,11 @@
 
 package com.husseinrasti.data.di
 
-import com.husseinrasti.data.favorite.dao.FavoriteDao
-import com.husseinrasti.data.favorite.repository.FavoriteRepositoryImpl
+import com.husseinrasti.data.news.dao.NewsDao
+import com.husseinrasti.data.news.repository.NewsRepositoryImpl
 import com.husseinrasti.data.remoteKeys.datasource.RemoteKeysDataSource
 import com.husseinrasti.data.remoteKeys.repository.RemoteKeysRepositoryImpl
-import com.husseinrasti.domain.favorite.repository.FavoriteRepository
+import com.husseinrasti.domain.news.repository.NewsRepository
 import com.husseinrasti.domain.remotekeys.repository.RemoteKeysRepository
 import dagger.Module
 import dagger.Provides
@@ -41,8 +41,8 @@ class DataModule {
 
     @Provides
     @ViewModelScoped
-    fun provideFavoriteRepository(dao: FavoriteDao): FavoriteRepository {
-        return FavoriteRepositoryImpl(dao)
+    fun provideNewsRepository(dao: NewsDao): NewsRepository {
+        return NewsRepositoryImpl(dao)
     }
 
 }
