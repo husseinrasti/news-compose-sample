@@ -15,6 +15,12 @@ object Compose {
     const val composeIcons = "androidx.compose.material:material-icons-core:${BuildDependenciesVersions.compose}"
     const val composeIconsExtended = "androidx.compose.material:material-icons-extended:${BuildDependenciesVersions.compose}"
 
+    const val composePaging = "androidx.paging:paging-compose:1.0.0-alpha14"
+
+    const val composeCoil = "io.coil-kt:coil-compose:2.1.0"
+
+    const val composeHilt = "androidx.hilt:hilt-navigation-compose:1.0.0-rc01"
+
     const val composeNavigation = "androidx.navigation:navigation-compose:${BuildDependenciesVersions.composeNavigation}"
 
     const val composeMaterial = "androidx.compose.material:material:${BuildDependenciesVersions.compose}"

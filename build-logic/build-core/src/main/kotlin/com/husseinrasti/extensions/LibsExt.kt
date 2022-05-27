@@ -40,6 +40,9 @@ fun DependencyHandler.addComposeDependencies() {
     implementation(Compose.composeIcons)
     implementation(Compose.composeIconsExtended)
     implementation(Compose.composeNavigation)
+    implementation(Compose.composeHilt)
+    implementation(Compose.composePaging)
+    implementation(Compose.composeCoil)
     implementation(Compose.composeUITests)
 }
 

@@ -41,7 +41,7 @@ fun RssApp() {
 
         Scaffold(
             modifier = Modifier,
-            containerColor = Color.Transparent,
+            containerColor = MaterialTheme.colorScheme.background,
             contentColor = MaterialTheme.colorScheme.onBackground,
             bottomBar = {
                 RssBottomBar(
@@ -50,12 +50,20 @@ fun RssApp() {
                 )
             }
         ) { padding ->
-            RssNavHost(
-                navController = navController,
-                modifier = Modifier
-                    .padding(padding)
-                    .consumedWindowInsets(padding)
-            )
+            Column(
+                Modifier
+                    .fillMaxSize()
+                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal))
+            ) {
+                Spacer(Modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top)))
+                RssNavHost(
+                    navController = navController,
+                    modifier = Modifier
+                        .padding(padding)
+                        .consumedWindowInsets(padding)
+                )
+                Spacer(Modifier.windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Bottom)))
+            }
         }
 
     }

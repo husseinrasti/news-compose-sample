@@ -32,7 +32,7 @@ object PluginsVersions {
     const val GRADLE_ANDROID = "7.1.3"
     const val KOTLIN = "1.6.20"
     const val DAGGER_HILT = "2.39"
-    const val NAVIGATION = "2.3.5"
+    const val NAVIGATION = "2.4.2"
 }
 
 dependencies {

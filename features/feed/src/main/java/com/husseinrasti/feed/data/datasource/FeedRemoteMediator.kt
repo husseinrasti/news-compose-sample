@@ -48,7 +48,7 @@ class FeedRemoteMediator @Inject constructor(
             }
         }
         try {
-            val response = api.getNews(page = (page * state.config.pageSize))
+            val response = api.getNews(page = page)
             return if (response.isSuccessful) {
                 val data = response.body()?.results!!
                 val endOfPaginationReached = data.isEmpty()

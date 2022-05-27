@@ -26,7 +26,9 @@ class FeedEntity {
         @ColumnInfo(name = "date")
         val date: String,
         @ColumnInfo(name = "title")
-        val title: String
+        val title: String,
+        @ColumnInfo(name = "isFavorite")
+        var isFavorite: Boolean = false
     )
 
 }
