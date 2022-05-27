@@ -16,8 +16,11 @@
 
 package com.husseinrasti.data.di
 
+import com.husseinrasti.data.favorite.dao.FavoriteDao
+import com.husseinrasti.data.favorite.repository.FavoriteRepositoryImpl
 import com.husseinrasti.data.remoteKeys.datasource.RemoteKeysDataSource
 import com.husseinrasti.data.remoteKeys.repository.RemoteKeysRepositoryImpl
+import com.husseinrasti.domain.favorite.repository.FavoriteRepository
 import com.husseinrasti.domain.remotekeys.repository.RemoteKeysRepository
 import dagger.Module
 import dagger.Provides
@@ -34,6 +37,12 @@ class DataModule {
     @ViewModelScoped
     fun provideRemoteKeysRepository(dataSource: RemoteKeysDataSource): RemoteKeysRepository {
         return RemoteKeysRepositoryImpl(dataSource)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideFavoriteRepository(dao: FavoriteDao): FavoriteRepository {
+        return FavoriteRepositoryImpl(dao)
     }
 
 }

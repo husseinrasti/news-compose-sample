@@ -35,4 +35,8 @@ class FeedRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun update(entity: FeedEntity.Item) {
+        dao.update(entity)
+    }
+
 }

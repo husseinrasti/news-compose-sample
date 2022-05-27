@@ -12,4 +12,6 @@ interface FeedRepository {
 
     fun getFeeds(): Flow<PagingData<FeedEntity.Item>>
 
+    suspend fun update(entity: FeedEntity.Item)
+
 }

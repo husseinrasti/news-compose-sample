@@ -3,9 +3,6 @@ package com.husseinrasti.feed.component
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.outlined.Favorite
-import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -63,8 +60,9 @@ fun CardNews(
                     )
                     IconButton(onClick = { onClickFavorite(item) }) {
                         Icon(
-                            imageVector = if (item.isFavorite) Icons.Outlined.Favorite
-                            else Icons.Filled.Favorite,
+                            imageVector = Icons.Filled.Favorite,
+                            tint = if (item.isFavorite) MaterialTheme.colorScheme.onError
+                            else MaterialTheme.colorScheme.outline,
                             contentDescription = null
                         )
                     }

@@ -16,6 +16,7 @@
 
 package com.husseinrasti.rss.di
 
+import com.husseinrasti.data.favorite.dao.FavoriteDao
 import com.husseinrasti.data.remoteKeys.dao.RemoteKeysDao
 import com.husseinrasti.feed.data.dao.FeedDao
 import com.husseinrasti.rss.database.AppDatabase
@@ -40,6 +41,12 @@ class DaoModule {
     @ViewModelScoped
     fun feedDao(appDatabase: AppDatabase): FeedDao {
         return appDatabase.feedDao()
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun favoriteDao(appDatabase: AppDatabase): FavoriteDao {
+        return appDatabase.favoriteDao()
     }
 
 }

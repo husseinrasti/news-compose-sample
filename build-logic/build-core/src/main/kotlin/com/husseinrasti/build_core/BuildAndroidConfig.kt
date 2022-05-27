@@ -35,7 +35,7 @@ object BuildAndroidConfig {
 
     const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
 
-    const val API_KEY = "pub_77206dba4be9566d317bd9c37c0a71e34a59"
+    const val API_KEY = "pub_7767d5fa7f2a0e4a4662687c4b92c247c781"
     const val API_VERSION = "1"
     const val BASE_URL = "https://newsdata.io/api/$API_VERSION/"
 
